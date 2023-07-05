@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe App</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="main.js" defer></script>
+</head>
+
+<body class="bg-slate-100">
+    <header class="bg-white/95 py-4 px-4 max-[400px]:pl-1 flex justify-between relative">
+        <h2
+            class="text-3xl max-[400px]:text-2xl font-bold bg-gradient-to-r from-orange-600 to-amber-400 bg-clip-text text-transparent">
+            Food Recipe</h2>
+        <nav class="mr-10 self-center h-fit w- w-2/4 max-w-md max-sm:hidden">
+            <ul
+                class="flex justify-between items-center gap-x-8 [&>li]:tracking-wider [&>li]:text-xl [&>li]:font-medium [&>li]:text-slate-600">
+                <li class="cursor-pointer hover:text-orange-500 transition-all">Home</li>
+                <li class="cursor-pointer hover:text-orange-500 transition-all">Recipes</li>
+                <li class="cursor-pointer hover:text-orange-500 transition-all">Favourites</li>
+            </ul>
+        </nav>
+        <!-- Open Menu -->
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+            class="open-menu-btn cursor-pointer w-6 h-6 self-center hidden max-sm:block">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+        <!-- Close menu -->
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="close-menu-btn cursor-pointer w-6 h-6 self-center hidden">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+          
+        <!-- Nav for sm -->
+        <nav class="nav-for-sm absolute top-full right-0 left-0 bg-orange-100 hidden">
+            <ul
+                class="flex flex-col items-center gap-y-8 py-8 [&>li]:tracking-wider [&>li]:text-xl [&>li]:font-medium [&>li]:text-slate-600">
+                <li class="cursor-pointer hover:text-orange-500 transition-all">Home</li>
+                <li class="cursor-pointer hover:text-orange-500 transition-all">Recipes</li>
+                <li class="cursor-pointer hover:text-orange-500 transition-all">Favourites</li>
+            </ul>
+        </nav>
+    </header>
+</body>
+
+</html>
