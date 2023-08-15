@@ -14,24 +14,31 @@ closeMenuBtn.addEventListener("click", () => {
   menuForSm.classList.add("hidden");
 });
 
-
-
 // Recipe Apis
 const recipeContainer = document.querySelector(".recipe-c");
 const recipeImg = document.querySelector(".recipe img");
 const recipeName = document.querySelector(".recipe-name");
 
+const mealsFromApi = async () => {
+  let apiSource = await fetch(
+    "https://www.themealdb.com/api/json/v1/1/categories.php"
+  );
+  const apiJson = await apiSource.json();
+  
+  console.log(apiJson);
 
-const randomMeal = async () => {
-    let apiSource = await fetch('https://www.themealdb.com/api/json/v1/1/categories.php');
-    const apiJson = await apiSource.json();
-    const mealImg = apiJson.categories[0].strCategoryThumb;
-    const mealName = apiJson.categories[0].strCategory;
-    console.log(apiJson)
+  return apiJson.categories;
 
-    let meal = document.createElement('li');
+};
 
-    meal.innerHTML = `
+
+const displayEachMeal = (categories) =>{
+  const mealImg = categories.strCategoryThumb;
+  const mealName = categories.strCategory;
+
+  let mealEl = document.createElement("li");
+
+  mealEl.innerHTML = `
     <li class="recipe border w-96 h-64 rounded-xl overflow-hidden relative">
     <img class="object-cover" src="${mealImg}" alt="${mealName}">
     <div class="flex justify-between items-center absolute bottom-0 left-0 right-0 py-1.5 px-4 bg-white/80">
@@ -41,10 +48,18 @@ const randomMeal = async () => {
           </svg>   
     </div>
 </li>
-    `
-    recipeContainer.append(meal)
-};
+    `;
+ recipeContainer.append(mealEl);
+}
 
 
+const displayMeals = async () => {
+  const mealsArray = await mealsFromApi();
 
-randomMeal()
+  for(const meal of mealsArray){
+    displayEachMeal(meal)
+  }
+}
+
+
+displayMeals()
