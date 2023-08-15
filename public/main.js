@@ -23,10 +23,10 @@ const recipeName = document.querySelector(".recipe-name");
 
 
 const randomMeal = async () => {
-    let apiSource = await fetch('https://www.themealdb.com/api/json/v1/1/random.php');
+    let apiSource = await fetch('https://www.themealdb.com/api/json/v1/1/categories.php');
     const apiJson = await apiSource.json();
-    const mealImg = apiJson.meals[0].strMealThumb;
-    const mealName = apiJson.meals[0].strMeal;
+    const mealImg = apiJson.categories[0].strCategoryThumb;
+    const mealName = apiJson.categories[0].strCategory;
     console.log(apiJson)
 
     let meal = document.createElement('li');
@@ -44,5 +44,7 @@ const randomMeal = async () => {
     `
     recipeContainer.append(meal)
 };
+
+
 
 randomMeal()
