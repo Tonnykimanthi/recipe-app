@@ -39,7 +39,7 @@ const displayEachMeal = (categories) =>{
   let mealEl = document.createElement("li");
 
   mealEl.innerHTML = `
-    <li class="recipe border w-96 h-64 rounded-xl overflow-hidden relative">
+    <li class="recipe border w-[23rem] h-64 rounded-xl overflow-hidden relative">
     <img class="object-cover" src="${mealImg}" alt="${mealName}">
     <div class="flex justify-between items-center absolute bottom-0 left-0 right-0 py-1.5 px-4 bg-white/80">
         <span class="recipe-name text-black text-lg font-medium">${mealName}</span>
