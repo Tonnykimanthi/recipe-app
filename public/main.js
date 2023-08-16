@@ -31,7 +31,7 @@ const mealsByCategories = async () => {
   return apiJson.categories;
 };
 
-const displayMealByCategories = (categories) => {
+const displayMeals = (categories) => {
   const mealImg = categories.strCategoryThumb;
   const mealName = categories.strCategory;
 
@@ -63,11 +63,11 @@ const displayMealByCategories = (categories) => {
 
 };
 
-const displayMeals = async () => {
+const displayMealsByCategories = async () => {
   const mealsArray = await mealsByCategories();
 
   for (const meal of mealsArray) {
-    displayMealByCategories(meal);
+    displayMeals(meal);
   }
 };
 
@@ -77,15 +77,23 @@ const searchMealByName = async () => {
   const mealsJson = await fetchMeals.json()
   console.log(mealsJson)
   const mealArray = mealsJson.meals;
+
+  if(mealArray){
+    recipeContainer.innerHTML = '';
+    for(const meal of mealArray){
+      displayMeals(meal)
+    }
+  }else{
+    recipeContainer.innerHTML = "<p>Not Found</p>"
+  }
 }
 const searchBtn = document.getElementById('search-btn');
-const searchInput = document.getElementById('search-input');
 searchBtn.addEventListener('click', ()=>{
-  const inputField = searchInput.value.trim()
+  const searchInput = document.getElementById('search-input').value.trim();
+
+  if(searchInput !== ''){
+   searchMealByName()
+  }
 })
-searchMealByName()
 
-
-
-
-displayMeals();
+displayMealsByCategories();
