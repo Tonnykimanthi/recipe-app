@@ -78,12 +78,11 @@ const searchMealByName = async (name) => {
   console.log(mealsJson)
   const mealArray = mealsJson.meals;
 
-  const mealEl = document.createElement('li')
-
   if(mealArray){
     recipeContainer.innerHTML = '';
 
     for(const meal of mealArray){
+      const mealEl = document.createElement('li')
       mealEl.innerHTML = `
       <li class="recipe border w-[23rem] h-64 rounded-xl overflow-hidden relative">
       <img class="object-cover w-full" src="${meal.strMealThumb}" alt="${meal.strMeal}">
@@ -104,12 +103,11 @@ const searchMealByName = async (name) => {
 
 const searchBtn = document.getElementById('search-btn');
 searchBtn.addEventListener('click',  ()=>{
-  const searchInput = document.getElementById('search-input').value;
+  const searchInput = document.getElementById('search-input').value.trim();
 
   if(searchInput !== ''){
    
     searchMealByName(searchInput)
   }
 })
-// searchMealByName()
 displayMealsByCategories();
