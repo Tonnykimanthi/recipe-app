@@ -19,7 +19,8 @@ const recipeContainer = document.querySelector(".recipe-c");
 const recipeImg = document.querySelector(".recipe img");
 const recipeName = document.querySelector(".recipe-name");
 
-const mealsFromApi = async () => {
+// Fetch meal by category
+const mealsByCategories = async () => {
   let apiSource = await fetch(
     "https://www.themealdb.com/api/json/v1/1/categories.php"
   );
@@ -30,7 +31,7 @@ const mealsFromApi = async () => {
   return apiJson.categories;
 };
 
-const displayEachMeal = (categories) => {
+const displayMealByCategories = (categories) => {
   const mealImg = categories.strCategoryThumb;
   const mealName = categories.strCategory;
 
@@ -63,11 +64,28 @@ const displayEachMeal = (categories) => {
 };
 
 const displayMeals = async () => {
-  const mealsArray = await mealsFromApi();
+  const mealsArray = await mealsByCategories();
 
   for (const meal of mealsArray) {
-    displayEachMeal(meal);
+    displayMealByCategories(meal);
   }
 };
+
+
+const searchMealByName = async () => {
+  const fetchMeals = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata')
+  const mealsJson = await fetchMeals.json()
+  console.log(mealsJson)
+  const mealArray = mealsJson.meals;
+}
+const searchBtn = document.getElementById('search-btn');
+const searchInput = document.getElementById('search-input');
+searchBtn.addEventListener('click', ()=>{
+  const inputField = searchInput.value.trim()
+})
+searchMealByName()
+
+
+
 
 displayMeals();
