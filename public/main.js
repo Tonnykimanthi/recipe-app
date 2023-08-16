@@ -71,7 +71,10 @@ const displayMealsByCategories = async () => {
   }
 };
 
+displayMealsByCategories();
 
+
+// Search meal by name
 const searchMealByName = async (name) => {
   const fetchMeals = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`)
   const mealsJson = await fetchMeals.json()
@@ -110,4 +113,5 @@ searchBtn.addEventListener('click',  ()=>{
     searchMealByName(searchInput)
   }
 })
-displayMealsByCategories();
+
+
