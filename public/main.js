@@ -98,10 +98,24 @@ const searchMealByName = async (name) => {
   </li>
       `
       recipeContainer.append(mealEl)
+
+      const btn = mealEl.querySelector('.recipe div .star-btn')
+
+      btn.addEventListener('click', () => {
+        if(btn.classList.contains('fill-orange-500')){
+          btn.classList.remove('fill-orange-500')
+        }else{
+          btn.classList.add('fill-orange-500')
+        }
+        
+      })
     }
   }else{
     recipeContainer.innerHTML = "<p>Not found</p>"
   }
+
+
+
 }
 
 const searchBtn = document.getElementById('search-btn');
