@@ -27,7 +27,7 @@ const mealsByCategories = async () => {
   );
   const apiJson = await apiSource.json();
 
-  console.log(apiJson);
+  // console.log(apiJson);
 
   return apiJson.categories;
 };
@@ -139,13 +139,14 @@ const addMealToLS = (mealId) => {
 
 // Get from LS
 const getMealFromLS = () => {
-  return JSON.parse(localStorage.getItem("mealId"));
+  const mealIds = JSON.parse(localStorage.getItem("mealId"));
+  return mealIds === null ? [] : mealIds
 };
 
 // Remove from LS
 const removeMealFromLS = (mealId) => {
   const getMeals = getMealFromLS() || [];
-  const existingInLS = getMeals.filter((meal) => meal.mealId !== mealId);
+  const existingInLS = getMeals.filter((meal) => meal !== mealId);
 
   localStorage.setItem("mealId", JSON.stringify(existingInLS));
 };
@@ -155,16 +156,18 @@ const fetchMealById = async (id) => {
     `https://www.themealdb.com/api/json/v1/1/lookup.php?i= ${id}`
   );
   const respJson = await resp.json();
-  console.log(respJson);
+  const meals = respJson.meals[0];
+  return meals
 };
 
 // Display favourite meals
 const displayFavMeals = async () => {
   const getFromLS = getMealFromLS() || [];
 
-  for (mealId of getFromLS) {
-    const meal = await fetchMealById(mealId);
+  
 
+  for (const mealId of getFromLS) {
+    const meal = await fetchMealById(mealId);
     if (meal) {
       const mealEl = document.createElement("li");
 
@@ -179,12 +182,9 @@ const displayFavMeals = async () => {
   </div>
 </li>
   `;
-
       favContainer.append(mealEl);
     }
   }
 };
 
 displayFavMeals();
-
-fetchMealById();
