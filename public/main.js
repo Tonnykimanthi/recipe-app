@@ -35,7 +35,7 @@ const displayMeals = (categories) => {
   const mealImg = categories.strCategoryThumb;
   const mealName = categories.strCategory;
 
-  let mealEl = document.createElement("li");
+  let mealEl = document.createElement("ul");
 
   mealEl.innerHTML = `
   <li class="recipe border w-[23rem] h-64 rounded-xl overflow-hidden relative">
@@ -85,7 +85,7 @@ const searchMealByName = async (name) => {
     recipeContainer.innerHTML = '';
 
     for(const meal of mealArray){
-      const mealEl = document.createElement('li')
+      const mealEl = document.createElement('ul')
       mealEl.innerHTML = `
       <li class="recipe border w-[23rem] h-64 rounded-xl overflow-hidden relative">
       <img class="object-cover w-full" src="${meal.strMealThumb}" alt="${meal.strMeal}" loading="lazy">
