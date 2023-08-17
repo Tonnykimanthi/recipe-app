@@ -14,11 +14,22 @@ closeMenuBtn.addEventListener("click", () => {
   menuForSm.classList.add("hidden");
 });
 
-// RECIPE APIS
+// RECIPE PAGE
 const recipeContainer = document.querySelector(".recipe-c");
 const recipeImg = document.querySelector(".recipe img");
 const recipeName = document.querySelector(".recipe-name");
 const favContainer = document.getElementById("favourites-container");
+
+const favBody = document.getElementById("fav-body");
+const openFavBtn = document.getElementById("open-fav-btn");
+const closeFavBtn = document.getElementById("close-fav-btn");
+
+openFavBtn.addEventListener("click", () => {
+  favBody.classList.remove("hidden")
+});
+closeFavBtn.addEventListener("click", () => {
+  favBody.classList.add("hidden")
+});
 
 // Fetch meal by category
 const mealsByCategories = async () => {
@@ -109,6 +120,7 @@ const searchMealByName = async (name) => {
           btn.classList.add("fill-orange-500");
           addMealToLS(meal.idMeal);
         }
+        displayFavMeals()
       });
     }
   } else {
@@ -140,7 +152,7 @@ const addMealToLS = (mealId) => {
 // Get from LS
 const getMealFromLS = () => {
   const mealIds = JSON.parse(localStorage.getItem("mealId"));
-  return mealIds === null ? [] : mealIds
+  return mealIds === null ? [] : mealIds;
 };
 
 // Remove from LS
@@ -157,14 +169,12 @@ const fetchMealById = async (id) => {
   );
   const respJson = await resp.json();
   const meals = respJson.meals[0];
-  return meals
+  return meals;
 };
 
 // Display favourite meals
 const displayFavMeals = async () => {
   const getFromLS = getMealFromLS() || [];
-
-  
 
   for (const mealId of getFromLS) {
     const meal = await fetchMealById(mealId);
