@@ -39,7 +39,7 @@ const displayMeals = (categories) => {
 
   mealEl.innerHTML = `
   <li class="recipe border w-[23rem] h-64 rounded-xl overflow-hidden relative">
-    <img class="object-cover w-full" src="${mealImg}" alt="${mealName}">
+    <img class="object-cover w-full" src="${mealImg}" alt="${mealName}" loading="lazy">
     <div class="flex justify-between items-center absolute bottom-0 left-0 right-0 py-1.5 px-4 bg-gray-100/60">
         <span class="recipe-name text-black text-lg font-medium">${mealName}</span>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="0.5" stroke="currentColor" class="star-btn w-6 h-6 cursor-pointer">
@@ -88,7 +88,7 @@ const searchMealByName = async (name) => {
       const mealEl = document.createElement('li')
       mealEl.innerHTML = `
       <li class="recipe border w-[23rem] h-64 rounded-xl overflow-hidden relative">
-      <img class="object-cover w-full" src="${meal.strMealThumb}" alt="${meal.strMeal}">
+      <img class="object-cover w-full" src="${meal.strMealThumb}" alt="${meal.strMeal}" loading="lazy">
       <div class="flex justify-between items-center absolute bottom-0 left-0 right-0 py-1.5 px-4 bg-gray-100/60">
           <span class="recipe-name text-black text-lg font-medium">${meal.strMeal}</span>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="0.5" stroke="currentColor" class="star-btn w-6 h-6 cursor-pointer">
