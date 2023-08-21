@@ -257,8 +257,6 @@ const displayFavMeals = async () => {
 </li>
   `;
       favContainer.append(mealEl);
-      
-      // *****UNFINISHED
       const favBtn = mealEl.querySelector(".recipe div .star-btn")
       favBtn.addEventListener("click", ()=>{
         if(favBtn.classList.contains("fill-orange-500")){
@@ -268,7 +266,6 @@ const displayFavMeals = async () => {
           favBtn.classList.add("fill-orange-500");
           addMealToLS(meal.idMeal)
         }
-        fetchMealById(meal.idMeal)
       })
     }
   }
