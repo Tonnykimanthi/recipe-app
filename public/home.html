@@ -9,7 +9,7 @@
     <script src="main.js" defer></script>
 </head>
 
-<body class="bg-slate-100 overflow-hidden">
+<body class="bg-slate-100">
     <header class="bg-white/95 py-4 px-4 max-[400px]:pl-1 flex justify-between relative">
         <h2
             class="text-3xl max-[400px]:text-2xl font-bold bg-gradient-to-r from-orange-600 to-amber-400 bg-clip-text text-transparent cursor-pointer">
@@ -17,9 +17,9 @@
         <nav class="mr-10 self-center h-fit w- w-2/4 max-w-md max-sm:hidden">
             <ul
                 class="flex justify-between items-center gap-x-8 [&>li]:tracking-wider [&>li]:text-xl [&>li]:font-medium [&>li]:text-slate-600">
-                <li class="cursor-pointer hover:text-orange-500 transition-all">Home</li>
-                <li class="cursor-pointer hover:text-orange-500 transition-all"><a href="index2.html">Recipes</a></li>
-                <li class="cursor-pointer hover:text-orange-500 transition-all">Favourites</li>
+                <li class="home-btn text-orange-500 hover:text-orange-500 transition-all cursor-pointer">Home</li>
+                <li class="recipe-btn hover:text-orange-500 transition-all cursor-pointer">Recipes</li>
+                <li class="fav-btn hover:text-orange-500 transition-all cursor-pointer">Favourites</li>
             </ul>
         </nav>
         <!-- Open Menu -->
@@ -36,23 +36,60 @@
         <nav class="nav-for-sm absolute top-full right-0 left-0 bg-orange-100 hidden">
             <ul
                 class="flex flex-col items-center gap-y-8 py-8 [&>li]:tracking-wider [&>li]:text-xl [&>li]:font-medium [&>li]:text-slate-600">
-                <li class="cursor-pointer hover:text-orange-500 transition-all">Home</li>
-                <li class="cursor-pointer hover:text-orange-500 transition-all">Recipes</li>
-                <li class="cursor-pointer hover:text-orange-500 transition-all">Favourites</li>
+                <li class="home-btn text-orange-500 cursor-pointer hover:text-orange-500 transition-all">Home</li>
+                <li class="recipe-btn cursor-pointer hover:text-orange-500 transition-all">Recipes</li>
+                <li class="fav-btn cursor-pointer hover:text-orange-500 transition-all">Favourites</li>
             </ul>
         </nav>
     </header>
 
-    <main class="flex justify-between max-lg:flex-col">
+    <main class="home-body flex justify-between max-lg:flex-col">
         <div class="mt-36 ml-14 w-4/12 max-lg:ml-0 max-lg:w-2/3 max-sm:w-11/12 max-lg:text-center max-lg:self-center">
             <h1 class="text-[2.5rem] leading-tight font-medium max-lg:text-white">Around the World in <span class="text-orange-600">Delicious</span> Dishes</h1>
             <p class="text-xl mt-2 max-lg:text-white">Get ready to expand your palate, ignite your taste buds, and discover the incredible world of international cuisine, one delicious dish at a time.</p>
-            <button class="bg-orange-500 text-white text-lg font-medium mt-6 border-2 border-orange-500 w-36 py-1.5 rounded hover:bg-transparent hover:text-orange-500 transition-all duration-300"><a href="index2.html">Explore</a></button>
+            <button class="recipe-btn bg-orange-500 text-white text-lg font-medium mt-6 border-2 border-orange-500 w-36 py-1.5 rounded hover:bg-transparent hover:text-orange-500 transition-all duration-300">Explore</button>
         </div>
         <div class="mt-28 w-96 h-96 mr-16 rounded-full overflow-hidden max-lg:mt-20 max-lg:w-[44em] max-lg:h-[44em] max-lg:absolute top-0 left-2/4 max-lg:-translate-x-2/4 -z-10">
             <img class="w-full h-full object-cover" src="images/food.jfif" alt="">
         </div>
     </main>
+
+
+    <!-- Recipe Body -->
+    <section id="recipe-body" class="mt-12 hidden">
+        <div class="w-11/12 h-14 mx-auto max-w-lg flex relative">
+            <input id="search-input"
+                class="text-lg w-full h-full pl-14 border-y border-l border-black rounded-s focus:border-amber-700 outline-none transition-all duration-300"
+                type="text">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-6 h-6 absolute top-2/4 left-6 -translate-y-2/4">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+            </svg>
+            <button id="search-btn"
+                class="bg-slate-400 text-white font-medium w-24 h-full rounded-e hover:bg-slate-500 transition-all">Search</button>
+        </div>
+
+        <small class="border-b block my-10 mx-auto w-[95%]"></small>
+
+        <!-- Meals by category and search -->
+        <main class="w-[95%] mx-auto">
+            <ul class="recipe-c w-full grid grid-cols-3 max-md:grid-cols-2 max-[500px]:grid-cols-1 gap-x-2 gap-y-6">
+    
+            </ul>
+        </main>
+
+    </section>
+
+    <!-- Favourite meals -->
+    <section id="fav-body" class="bg-white mt-8 mx-auto w-[95%] hidden">
+
+        <ul id="favourites-container" class="grid grid-cols-3 max-md:grid-cols-2 max-[500px]:grid-cols-1 gap-x-2 gap-y-6">
+
+        </ul>
+    </section>
+
+
 </body>
 
 </html>
