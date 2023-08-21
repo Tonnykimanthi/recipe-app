@@ -25,10 +25,6 @@ closeMenuBtn.addEventListener("click", () => {
   menuForSm.classList.add("hidden");
 });
 
-// RECIPE PAGE
-// const recipeImg = document.querySelector(".recipe img");
-// const recipeName = document.querySelector(".recipe-name");
-
 // Nav event listeners
 homeBtn.forEach((btn)=>{
   btn.addEventListener("click", ()=>{
@@ -36,15 +32,40 @@ homeBtn.forEach((btn)=>{
       homeBody.classList.remove("hidden");
       recipeBody.classList.add("hidden");
       favBody.classList.add("hidden");
+
+      homeBtn.forEach((b)=>{
+        b.classList.replace("text-slate-500", "text-orange-500");
+      });
+
+      recipeBtn.forEach((b)=>{
+        b.classList.replace("text-orange-500", "text-slate-500");
+      });
+      
+      favBtn.forEach((b)=>{
+        b.classList.replace("text-orange-500", "text-slate-500");
+      });
+
     }
   })
 });
+
 recipeBtn.forEach((btn)=>{
   btn.addEventListener("click", ()=>{
     if(recipeBody.classList.contains("hidden")){
       recipeBody.classList.remove("hidden");
       favBody.classList.add("hidden");
       homeBody.classList.add("hidden");
+
+      recipeBtn.forEach((b)=>{
+        b.classList.replace("text-slate-500", "text-orange-500");
+      });
+      homeBtn.forEach((b)=>{
+        b.classList.replace("text-orange-500", "text-slate-500");
+      });
+      favBtn.forEach((b)=>{
+        b.classList.replace("text-orange-500", "text-slate-500");
+      });
+
     }
   })
 });
@@ -55,6 +76,19 @@ favBtn.forEach((btn)=>{
       favBody.classList.remove("hidden");
       recipeBody.classList.add("hidden");
       homeBody.classList.add("hidden");
+
+      favBtn.forEach((b)=>{
+        b.classList.replace("text-slate-500", "text-orange-500");
+      });
+
+      homeBtn.forEach((b)=>{
+        b.classList.replace("text-orange-500", "text-slate-500");
+      });
+
+      recipeBtn.forEach((b)=>{
+        b.classList.replace("text-orange-500", "text-slate-500");
+      });
+
     }
   })
 });
@@ -80,7 +114,7 @@ const displayMeals = (categories) => {
   let mealEl = document.createElement("li");
 
   mealEl.innerHTML = `
-  <li class="recipe border border-slate-100 h-64 rounded-xl overflow-hidden cursor-pointer relative">
+  <li class="recipe border border-slate-300 h-64 rounded-xl overflow-hidden cursor-pointer relative">
     <img class="object-cover w-full h-full" src="${mealImg}" alt="${mealName}" loading="lazy">
     <div class="flex justify-between items-center absolute bottom-0 left-0 right-0 py-1.5 px-4 bg-gray-100/60">
         <span class="recipe-name text-black text-lg font-medium">${mealName}</span>
