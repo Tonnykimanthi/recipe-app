@@ -238,6 +238,8 @@ const fetchMealById = async (id) => {
 
 // Display favourite meals
 const displayFavMeals = async () => {
+  favContainer.innerHTML = '';
+
   const getFromLS = getMealFromLS() || [];
 
   for (const mealId of getFromLS) {
@@ -257,11 +259,13 @@ const displayFavMeals = async () => {
 </li>
   `;
       favContainer.append(mealEl);
-      const favBtn = mealEl.querySelector(".recipe div .star-btn")
+      const favBtn = mealEl.querySelector(".recipe div .star-btn");
       favBtn.addEventListener("click", ()=>{
+        favContainer.innerHTML = '';
         if(favBtn.classList.contains("fill-orange-500")){
           favBtn.classList.remove("fill-orange-500");
           removeMealFromLS(meal.idMeal);
+          displayFavMeals()
         }else{
           favBtn.classList.add("fill-orange-500");
           addMealToLS(meal.idMeal)
