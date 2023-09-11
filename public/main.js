@@ -170,7 +170,8 @@ const searchMealByName = async (name) => {
 
       const btn = mealEl.querySelector(".recipe div .star-btn");
 
-      btn.addEventListener("click", () => {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
         if (btn.classList.contains("fill-orange-500")) {
           btn.classList.remove("fill-orange-500");
           removeMealFromLS(meal.idMeal);
@@ -283,7 +284,7 @@ const showDescription = (mealEl, mealName, mealImg, instructions, meal) => {
 
     for (let i = 1; i <= 20; i++) {
       if (meal["strIngredient" + i]) {
-        ingredients.push(`${meal["strIngredient"+i]} -> ${meal["strMeasure" +i]}`);
+        ingredients.push(`${meal["strIngredient"+i]} - ${meal["strMeasure" +i]}`);
       }
     }
 
