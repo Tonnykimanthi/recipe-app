@@ -120,6 +120,14 @@ const displayMeals = async () => {
       `;
     recipeContainer.append(mealEl);
 
+    showDescription(
+      mealEl,
+      meal.strCategory,
+      meal.strCategoryThumb,
+      meal.strCategoryDescription,
+      meal
+    );
+
     const btn = mealEl.querySelector(".recipe div .star-btn");
 
     btn.addEventListener("click", () => {
@@ -284,6 +292,7 @@ const showDescription = (mealEl, mealName, mealImg, instructions, meal) => {
   const descriptionContainer = document.getElementById("description-container");
 
   mealEl.addEventListener("click", () => {
+    descriptionContainer.innerHTML = "";
     descriptionContainer.classList.remove("hidden");
     descriptionContainer.classList.add("flex");
 
@@ -314,7 +323,7 @@ const showDescription = (mealEl, mealName, mealImg, instructions, meal) => {
         <ul class="list-disc">
             ${ingredients.map((ingre) => `<li>${ingre}</li>`).join("")}
         </ul>
-        <h5 class="mt-4 font-medium text-xl">Instructions</h5>
+        <h5 class="mt-4 font-medium text-xl">Descriptions/Instructions</h5>
         <p>${instructions}</p>
     `;
     descriptionContainer.append(sectionEl);
