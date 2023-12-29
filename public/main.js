@@ -130,7 +130,8 @@ const displayMeals = async () => {
 
     const btn = mealEl.querySelector(".recipe div .star-btn");
 
-    btn.addEventListener("click", () => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
       if (btn.classList.contains("fill-orange-500")) {
         btn.classList.remove("fill-orange-500");
       } else {
