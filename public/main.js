@@ -108,8 +108,8 @@ const displayMeals = async () => {
     let mealEl = document.createElement("li");
 
     mealEl.innerHTML = `
-    <li class="recipe border border-slate-300 h-64 rounded-xl overflow-hidden cursor-pointer relative">
-      <img class="object-cover w-full h-full" src="${meal.strCategoryThumb}" alt="${meal.strCategory}" loading="lazy">
+    <li class="recipe border border-slate-200 h-64 rounded-xl overflow-hidden cursor-pointer relative group">
+      <img class="object-cover w-full h-full group-hover:scale-110 transition duration-300" src="${meal.strCategoryThumb}" alt="${meal.strCategory}" loading="lazy">
       <div class="flex justify-between items-center absolute bottom-0 left-0 right-0 py-1.5 px-4 bg-gray-100/60">
           <span class="recipe-name text-black text-lg font-medium">${meal.strCategory}</span>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="0.5" stroke="currentColor" class="star-btn w-6 h-6 cursor-pointer">
